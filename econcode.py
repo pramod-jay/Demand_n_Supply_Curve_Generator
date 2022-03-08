@@ -1,4 +1,6 @@
 import tkinter as tk
+from turtle import color, width
+from matplotlib import image
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
 from PIL import Image, ImageTk
@@ -54,12 +56,10 @@ demand_to.grid(row=3, column=0, padx=10, pady=5)
 price_to = tk.Entry(frame, bg="#282a35", fg="white", highlightthickness=2, highlightcolor="white", highlightbackground="white", width=10, font=("Calibri", 12))
 price_to.grid(row=3, column=1, padx=10, pady=5)
 
-btn_img=Image.open('button.png')
-btn_img=ImageTk.PhotoImage(btn_img)
+btn_img=tk.PhotoImage(file='Images/btn.png'
+button=tk.Button(frame, image=btn_img, command=btn_command, borderwidth=0)
+button.grid(row=4, column=0, columnspan=2)
 
-btn1=tk.Label(frame, image=btn_img)
-btn1.image=btn_img
-btn1.grid(row=4, column=0, columnspan=2, pady=5)
 
 root.mainloop()
 
