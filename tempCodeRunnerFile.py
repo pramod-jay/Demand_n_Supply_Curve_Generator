@@ -1,1 +1,1 @@
-15
+from PIL import Image, ImageTk
