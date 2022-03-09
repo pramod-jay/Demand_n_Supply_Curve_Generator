@@ -1,6 +1,6 @@
 import tkinter as tk
 from matplotlib.figure import Figure
-from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from PIL import ImageTk, Image
 
 root = tk.Tk()
@@ -9,6 +9,23 @@ root.title('Econocode')
 root.configure(background='#373A49')
 root.geometry('480x750')
 root.resizable(width='False', height='False')
+
+global count
+count = 1
+
+def about():
+    top = tk.Toplevel()
+    top.geometry('480x200')
+    top.title('About')
+    top.configure(background='#373A49')
+    top.resizable(width='False', height='False')
+
+    img1=Image.open('Images/logo.png')
+    img1=img1.resize((130,50))
+    img1=ImageTk.PhotoImage(img1)
+    img_logo1=tk.Label(top,image=img1,borderwidth=0, background='black')
+    img_logo1.grid(row=0, column=0, padx=100, pady=20)
+
 
 
 def btn_command():
@@ -62,28 +79,17 @@ def btn_command():
         canvas1 = FigureCanvasTkAgg(fig, master=frame)
         canvas1.draw()
         canvas1.get_tk_widget().grid(row=8, column=0, columnspan=2)
-        toolbar=NavigationToolbar2Tk(canvas1, root)
-        toolbar.update()
         canvas1.get_tk_widget().grid()
       
     except ValueError:
         lbl_answer.config(text="Please Enter Valid Data!!!", fg='red')
 
-def clear():
-    demand_from.set('')
-    demand_to.set('')
-    price_from.set('')
-    price_to.set('')
-
 
 menu_bar=tk.Menu(root)
 root.config(menu=menu_bar)
 
-new_menu=tk.Menu(menu_bar)
-menu_bar.add_cascade(label="New", command=clear)
-
 about_menu=tk.Menu(menu_bar)
-menu_bar.add_cascade(label="About", menu=about_menu)
+menu_bar.add_cascade(label="About", command=about)
 
 img=Image.open('Images/logo.png')
 img=img.resize((130,50))
