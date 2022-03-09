@@ -3,30 +3,35 @@ from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from PIL import ImageTk, Image
 
+
 root = tk.Tk()
 
 root.title('Econocode')
 root.configure(background='#373A49')
 root.geometry('480x750')
 root.resizable(width='False', height='False')
-
-global count
-count = 1
+root.iconbitmap("Images\icon.ico")
 
 def about():
     top = tk.Toplevel()
     top.geometry('480x200')
     top.title('About')
     top.configure(background='#373A49')
+    top.iconbitmap("Images\icon.ico")
     top.resizable(width='False', height='False')
 
-    img1=Image.open('Images/logo.png')
-    img1=img1.resize((130,50))
-    img1=ImageTk.PhotoImage(img1)
-    img_logo1=tk.Label(top,image=img1,borderwidth=0, background='black')
-    img_logo1.grid(row=0, column=0, padx=100, pady=20)
+    global img
+    img_logo1=tk.Label(top,image=img,borderwidth=0, background='#373A49')
+    img_logo1.place(relx=0.1, rely=0.1, relheight=0.3, relwidth=0.8)
 
+    lbl_module = tk.Label(top, text="Principal of Economics\tIS1020", bg="#373A49", fg="white", font=("Times New Roman", 15))
+    lbl_module.place(relx=0.05, rely=0.4, relheight=0.07, relwidth=0.9)
 
+    lbl_assignment = tk.Label(top, text="Assignment 02 (Individual)", bg="#373A49", fg="white", font=("Times New Roman", 15))
+    lbl_assignment.place(relx=0.05, rely=0.55, relheight=0.07, relwidth=0.9)
+    
+    lbl_name = tk.Label(top, text="205045J\tJayathilaka DDPD", bg="#373A49", fg="white", font=("Times New Roman", 13))
+    lbl_name.place(relx=0.05, rely=0.7, relheight=0.07, relwidth=0.9)
 
 def btn_command():
     try:
@@ -41,27 +46,28 @@ def btn_command():
         delP=y[1]-y[0]
         if(delP==0):
             if(delQD>0):
-                lbl_answer.config(text='inf')
+                lbl_answer.config(text='inf', fg='white')
                 lbl_class.config(text="Perfectly Elastic Demand")
             else:
-                lbl_answer.config(text='-inf')
+                lbl_answer.config(text='-inf', fg='white')
                 lbl_class.config(text="Perfectly Elastic Demand")
         else:
             PED=(delQD/delP)*(y[0]/x[0])
+            PED=round(PED,2)
             if((PED>-1) and (PED<1) and (PED!=0)):
-                    lbl_answer.config(text=PED)
+                    lbl_answer.config(text=PED, fg='white')
                     lbl_class.config(text="Inelastic Demand")
             elif((PED<-1) or (PED>1)):
-                    lbl_answer.config(text=PED)
+                    lbl_answer.config(text=PED, fg='white')
                     lbl_class.config(text="Elastic Demand")
             elif(PED==0.0):
-                    lbl_answer.config(text=PED)
+                    lbl_answer.config(text=PED, fg='white')
                     lbl_class.config(text="Perfectly Inelastic Demand")
             elif((PED==1) or (PED==-1)):
-                    lbl_answer.config(text=PED)
+                    lbl_answer.config(text=PED, fg='white')
                     lbl_class.config(text="Unitary Elastic Demand")
       
-        fig = Figure(figsize=(4,4), dpi=85, facecolor='#282a35')
+        fig = Figure(figsize=(4,4), dpi=80, facecolor='#282a35')
         plot1=fig.add_subplot(111)
         plot1.set_xlabel('Quantity of Demand')
         plot1.set_ylabel('Price')
@@ -79,7 +85,6 @@ def btn_command():
         canvas1 = FigureCanvasTkAgg(fig, master=frame)
         canvas1.draw()
         canvas1.get_tk_widget().grid(row=8, column=0, columnspan=2)
-        canvas1.get_tk_widget().grid()
       
     except ValueError:
         lbl_answer.config(text="Please Enter Valid Data!!!", fg='red')
@@ -91,6 +96,7 @@ root.config(menu=menu_bar)
 about_menu=tk.Menu(menu_bar)
 menu_bar.add_cascade(label="About", command=about)
 
+global img
 img=Image.open('Images/logo.png')
 img=img.resize((130,50))
 img=ImageTk.PhotoImage(img)
@@ -101,9 +107,9 @@ lbl_title = tk.Label(root, text="This application is designed to find the price-
 lbl_title.place(relx=0.05, rely=0.065, relheight=0.07, relwidth=0.9)
 
 frame=tk.Frame(root, bg='#282a35', highlightbackground="white", highlightcolor="white", highlightthickness=3)
-frame.place(relx=0.1, rely=0.15, relheight=0.78, relwidth=0.8)
+frame.place(relx=0.05, rely=0.15, relheight=0.8, relwidth=0.9)
 
-lbl_title = tk.Label(frame, text="Enter Relevant Details to Calculate", bg="#282a35", fg="white", font=("Calibri", 15),padx=41)
+lbl_title = tk.Label(frame, text="Enter Relevant Details to Calculate", bg="#282a35", fg="white", font=("Calibri", 15),padx=60)
 lbl_title.grid(row=0, column=0, columnspan=2)
 
 lbl_demand = tk.Label(frame, text="Demand (Quan.)", bg="#282a35", fg="white", font=("Calibri", 12))
