@@ -13,8 +13,9 @@ def btn_command():
    
     fig = Figure(figsize=(4,4), dpi=90)
     plot1=fig.add_subplot(111)
-    plot1.set_xlabel('Good 1')
-    plot1.set_ylabel('Good 2')
+    plot1.set_xlabel('Demand')
+    plot1.set_ylabel('Price')
+    plot1.grid(color = 'green', linestyle = '--', linewidth = 0.5)
     plot1.plot(x,y)
 
     canvas1 = FigureCanvasTkAgg(fig, master=frame)
@@ -56,6 +57,3 @@ button=tk.Button(frame, image=btn_img, command=btn_command, borderwidth=0)
 button.grid(row=4, column=0, columnspan=2)
 
 root.mainloop()
-
-
-
