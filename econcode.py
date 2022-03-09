@@ -1,4 +1,5 @@
 import tkinter as tk
+from turtle import color
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
 
@@ -11,12 +12,21 @@ def btn_command():
     x = [0,50,55]
     y = [0,50,55] 
    
-    fig = Figure(figsize=(4,4), dpi=90)
+    fig = Figure(figsize=(4,4), dpi=90, facecolor='#282a35')
     plot1=fig.add_subplot(111)
     plot1.set_xlabel('Demand')
     plot1.set_ylabel('Price')
-    plot1.grid(color = 'green', linestyle = '--', linewidth = 0.5)
-    plot1.plot(x,y)
+    plot1.set_facecolor("#282a35")
+    plot1.xaxis.label.set_color('white')     
+    plot1.yaxis.label.set_color('white')
+    plot1.tick_params(axis='x', colors='white')  
+    plot1.tick_params(axis='y', colors='white')
+    plot1.spines['left'].set_color('white')       
+    plot1.spines['right'].set_color('white')
+    plot1.spines['top'].set_color('white')
+    plot1.spines['bottom'].set_color('white')
+    plot1.grid(color = 'white', linestyle = '--', linewidth = 0.5)
+    plot1.plot(x,y, color='#00ff00')
 
     canvas1 = FigureCanvasTkAgg(fig, master=frame)
     canvas1.draw()
