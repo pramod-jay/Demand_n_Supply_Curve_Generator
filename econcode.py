@@ -3,6 +3,9 @@ from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from PIL import ImageTk, Image
 
+#tkinter library for create Graphical User Interface
+#matplotlib library for grnerate graph
+#PIL library for import images(Logos) and customize them 
 
 root = tk.Tk()
 
@@ -112,17 +115,17 @@ frame.place(relx=0.05, rely=0.15, relheight=0.8, relwidth=0.9)
 lbl_title = tk.Label(frame, text="Enter Relevant Details to Calculate", bg="#282a35", fg="white", font=("Calibri", 15),padx=60)
 lbl_title.grid(row=0, column=0, columnspan=2)
 
-lbl_demand = tk.Label(frame, text="Demand (Quan.)", bg="#282a35", fg="white", font=("Calibri", 12))
-lbl_demand.grid(row=1, column=0)
-
 lbl_price = tk.Label(frame, text="Price", bg="#282a35", fg="white", font=("Calibri", 12))
-lbl_price.grid(row=1, column=1)
+lbl_price.grid(row=1, column=0)
 
-demand_from = tk.Entry(frame, bg="#282a35", fg="white", highlightthickness=2, highlightcolor="white", highlightbackground="white", width=10, font=("Calibri", 12), justify="center", insertbackground="white")
-demand_from.grid(row=2, column=0, padx=10, pady=5)
+lbl_demand = tk.Label(frame, text="Demand (Q)", bg="#282a35", fg="white", font=("Calibri", 12))
+lbl_demand.grid(row=1, column=1)
 
 price_from = tk.Entry(frame, bg="#282a35", fg="white", highlightthickness=2, highlightcolor="white", highlightbackground="white", width=10, font=("Calibri", 12), justify="center", insertbackground="white")
-price_from.grid(row=2, column=1, padx=10, pady=5)
+price_from.grid(row=2, column=0, padx=10, pady=5)
+
+demand_from = tk.Entry(frame, bg="#282a35", fg="white", highlightthickness=2, highlightcolor="white", highlightbackground="white", width=10, font=("Calibri", 12), justify="center", insertbackground="white")
+demand_from.grid(row=2, column=1, padx=10, pady=5)
 
 lbl_to1 = tk.Label(frame, text="To", bg="#282a35", fg="white", font=("Calibri", 8))
 lbl_to1.grid(row=3, column=0)
@@ -130,11 +133,11 @@ lbl_to1.grid(row=3, column=0)
 lbl_to2 = tk.Label(frame, text="To", bg="#282a35", fg="white", font=("Calibri", 8))
 lbl_to2.grid(row=3, column=1)
 
-demand_to = tk.Entry(frame, bg="#282a35", fg="white", highlightthickness=2, highlightcolor="white", highlightbackground="white", width=10, font=("Calibri", 12), justify="center", insertbackground="white")
-demand_to.grid(row=4, column=0, padx=10, pady=5)
-
 price_to = tk.Entry(frame, bg="#282a35", fg="white", highlightthickness=2, highlightcolor="white", highlightbackground="white", width=10, font=("Calibri", 12), justify="center", insertbackground="white")
-price_to.grid(row=4, column=1, padx=10, pady=5)
+price_to.grid(row=4, column=0, padx=10, pady=5)
+
+demand_to = tk.Entry(frame, bg="#282a35", fg="white", highlightthickness=2, highlightcolor="white", highlightbackground="white", width=10, font=("Calibri", 12), justify="center", insertbackground="white")
+demand_to.grid(row=4, column=1, padx=10, pady=5)
 
 btn_img=tk.PhotoImage(file='Images/btn.png')
 button=tk.Button(frame, image=btn_img, command=btn_command, borderwidth=0)
