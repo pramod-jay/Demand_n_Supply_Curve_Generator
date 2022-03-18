@@ -1,3 +1,4 @@
+#ෂnstall the pyplotlib library,tkinter library and Pillow library before running the code.
 import tkinter as tk
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
